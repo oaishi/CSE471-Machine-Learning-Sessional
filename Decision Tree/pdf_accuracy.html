@@ -1,0 +1,27 @@
+<head> 
+    <style> 
+        table, th, td { 
+            border: 1px solid black; 
+        } 
+    </style> 
+</head> 
+
+<body>
+    {% for df in data_frames %}
+    <h1>Dataset name: {{ df['filename'] }}</h1>
+    <table style="width:100%"> 
+        <tr>
+            {% for column in df['df'].columns %}
+            <th>{{ column }}</th>
+            {% endfor %}
+        </tr>
+        {% for idx, row in df['df'].iterrows() %}
+        <tr>
+            {% for colname in df['df'].columns %}
+            <td>{{ row[colname]}}%</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    {% endfor %}
+</body>
